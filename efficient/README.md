@@ -6,26 +6,32 @@
 
   The following four cases shows the running time for array of size: 0.1 million, 0.5 million, 1 million and 5 million, respectively.
 
+        $ ../test/search.benchmark 1000000000
+        first_eq_idx_v1 (found): 1000000000 items in 527 ms
+        first_eq_idx_v2 (found): 1000000000 items in 417 ms
+        first_eq_idx_v3 (found): 1000000000 items in 341 ms
+        first_eq_idx (found): 1000000000 items in 335 ms
+
         $ ../test/search.benchmark 100000000
-        first_eq_idx_v1 (found): : 100000000 items in 63 ms
-        first_eq_idx_v2 (found): : 100000000 items in 56 ms
-        first_eq_idx_v3 (found): : 100000000 items in 48 ms
-        first_eq_idx (found): : 100000000 items in 46 ms
+        first_eq_idx_v1 (not found): : 100000000 items in 63 ms
+        first_eq_idx_v2 (not found): : 100000000 items in 56 ms
+        first_eq_idx_v3 (not found): : 100000000 items in 48 ms
+        first_eq_idx (not found): : 100000000 items in 46 ms
 
         $ ../test/search.benchmark 500000000
-        first_eq_idx_v1 (found): : 500000000 items in 290 ms
-        first_eq_idx_v2 (found): : 500000000 items in 250 ms
-        first_eq_idx_v3 (found): : 500000000 items in 211 ms
-        first_eq_idx (found): : 500000000 items in 203 ms
+        first_eq_idx_v1 (not found): : 500000000 items in 290 ms
+        first_eq_idx_v2 (not found): : 500000000 items in 250 ms
+        first_eq_idx_v3 (not found): : 500000000 items in 211 ms
+        first_eq_idx (not found): : 500000000 items in 203 ms
 
         $ ../test/search.benchmark 1000000000
-        first_eq_idx_v1 (found): : 1000000000 items in 580 ms
-        first_eq_idx_v2 (found): : 1000000000 items in 500 ms
-        first_eq_idx_v3 (found): : 1000000000 items in 422 ms
-        first_eq_idx (found): : 1000000000 items in 405 ms
+        first_eq_idx_v1 (not found): : 1000000000 items in 580 ms
+        first_eq_idx_v2 (not found): : 1000000000 items in 500 ms
+        first_eq_idx_v3 (not found): : 1000000000 items in 422 ms
+        first_eq_idx (not found): : 1000000000 items in 405 ms
 
         $ ../test/search.benchmark 5000000000
-        first_eq_idx_v1 (found): : 5000000000 items in 2897 ms
-        first_eq_idx_v2 (found): : 5000000000 items in 2503 ms
-        first_eq_idx_v3 (found): : 5000000000 items in 2106 ms
-        first_eq_idx (found): : 5000000000 items in 2023 ms
+        first_eq_idx_v1 (not found): : 5000000000 items in 2897 ms
+        first_eq_idx_v2 (not found): : 5000000000 items in 2503 ms
+        first_eq_idx_v3 (not found): : 5000000000 items in 2106 ms
+        first_eq_idx (not found): : 5000000000 items in 2023 ms

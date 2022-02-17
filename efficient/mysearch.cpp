@@ -2,7 +2,7 @@
 
 inline unsigned long first_eq_idx_v1(const unsigned int *array, unsigned long n, unsigned int item) {
     unsigned long idx = 0;
-    while (idx < n && array[idx++] != item);
+    for (; idx < n && array[idx] != item; ++idx);
     return idx;
 }
 
@@ -16,7 +16,7 @@ inline unsigned long first_eq_idx_v3(unsigned int *array, unsigned long n, unsig
     unsigned int tmp = array[n-1];
     array[n-1] = item;
     unsigned long idx = 0;
-    while (array[idx++] != item);
+    for (; array[idx] != item; ++idx);
     array[n-1] = tmp;
     if (idx == n-1 && item != tmp)
         ++idx;
@@ -64,17 +64,18 @@ long long timeInMilliseconds() {
 int main(int argc, char **argv) {
     long long start, elapsed;
     unsigned long count, idx;
-    unsigned int item = 2333;
+    unsigned int m = 10001; // 2 << 30;
+    unsigned int item = 233;
 
     count = argc == 2 ? strtol(argv[1], NULL, 10) : 100000000;
     unsigned int *array = (unsigned int *)malloc(sizeof(unsigned int) * count);
     array[0] = count >> 5;
     for (unsigned long i = 1; i < count; i++)
-        array[i] = (7 * array[i-1] + 29) % 10001;
-    
+        array[i] = (7 * array[i-1] + 29) % m;  // (81 * array[i-1] + 7) % m;
+
     start_benchmark();
     idx = first_eq_idx_v1(array, count, item);
-    if (idx == count) {
+    if (idx != count) {
         end_benchmark("first_eq_idx_v1 (found)")
     }
     else {
@@ -83,8 +84,8 @@ int main(int argc, char **argv) {
 
     start_benchmark();
     idx = first_eq_idx_v2(array, count, item);
-    if (idx == count) {
-        end_benchmark("first_eq_idx_v2 (found): ")
+    if (idx != count) {
+        end_benchmark("first_eq_idx_v2 (found)")
     }
     else {
         end_benchmark("first_eq_idx_v2 (not found)")
@@ -92,7 +93,7 @@ int main(int argc, char **argv) {
 
     start_benchmark();
     idx = first_eq_idx_v3(array, count, item);
-    if (idx == count) {
+    if (idx != count) {
         end_benchmark("first_eq_idx_v3 (found)")
     }
     else {
@@ -101,7 +102,7 @@ int main(int argc, char **argv) {
 
     start_benchmark();
     idx = first_eq_idx(array, count, item);
-    if (idx == count) {
+    if (idx != count) {
         end_benchmark("first_eq_idx (found)")
     }
     else {
